@@ -283,36 +283,3 @@ footer {
 .pagina-button:focus {
     outline: none;
 }
-
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.8rem;
-        letter-spacing: 0.2rem;
-        margin: 1.5rem 0; /* Reduz a margem superior em telas menores */
-    }
-
-    section input {
-        width: 100%;
-        padding: 0.8rem; /* Reduz o padding para se ajustar melhor em dispositivos móveis */
-    }
-
-    section button {
-        padding: 0.6rem 1rem; /* Reduz o tamanho dos botões */
-        font-size: 0.9rem;
-    }
-
-    .resultados-pesquisa {
-        grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
-        gap: 15px; /* Reduz o espaço entre os cards em dispositivos menores */
-    }
-
-    .btn-leia-mais {
-        padding: 8px 12px;
-        font-size: 0.9rem;
-    }
-
-    .pagina-button {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-}
