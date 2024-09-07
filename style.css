@@ -1,0 +1,318 @@
+h2 {
+    margin: 10px 0;
+}
+
+p {
+    font-size: 1rem;
+    color: #333;
+}
+
+a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Estiliza o corpo da página */
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    
+}
+
+/* Estiliza as seções da página */
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 3rem;
+    width: 100%;
+    padding: 0 20px;
+}
+
+/* Estiliza os inputs dentro das seções */
+section input {
+    width: 100%;
+    max-width: 30rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 1.5rem;
+    margin-bottom: 1rem;
+    color: #45474B;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+/* Estiliza os botões dentro das seções */
+section button {
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: #30475E;
+    color: #F5F7F8;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+section button:hover {
+    background-color: #30475E;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+#searchInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 110%;
+    flex: 1;
+    border: 2px solid #ccc; /* Borda mais destacada */
+    padding: 12px; /* Aumenta o padding */
+    border-radius: 10px;
+    font-size: 16px; /* Ajuste o tamanho da fonte conforme necessário */ 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#search-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Container do input e botao de pesquisa */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;    
+  }
+  
+  .search-button {
+    /* ... seus estilos existentes */
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .site-title {    
+    margin-left: 3rem; 
+    letter-spacing: 0.2rem; /* Espaçamento entre letras */
+    font-size: 3rem;
+    color: #333;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+  }
+
+
+/* Container das notícias com um layout de grade */
+.resultados-pesquisa {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Layout em grade que se ajusta automaticamente */
+    gap: calc(20px + 2vw); /* Gap se ajusta com a largura da viewport */
+    justify-content: space-between; /* Distribui os itens uniformemente */
+    display: grid;  
+    max-width: 1200px;
+    margin: 2rem auto;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Estiliza cada item de resultado (card) */
+.item-resultado {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-resultado:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estiliza a imagem dentro dos itens de resultado */
+.item-resultado img {
+    width: 100%; /* A imagem ocupa toda a largura do card */
+    height: 200px; /* Altura fixa da imagem */
+    object-fit: cover; /* Ajusta a imagem dentro do espaço */
+}
+
+/* Estiliza o conteúdo do card */
+.item-resultado .conteudo {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    align-items: center; /* Centraliza o conteúdo horizontalmente */
+    height: 100%;
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estiliza os títulos dentro dos itens de resultado */
+.item-resultado h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estiliza o parágrafo dentro dos itens de resultado */
+.item-resultado p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Estiliza o botão de Leia Mais */
+.btn-leia-mais {
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    padding: 10px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    text-align: center;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-leia-mais:hover {
+    background-color: #0056b3;
+    transform: scale(1.05); /* Leve aumento no tamanho ao passar o mouse */
+}
+
+.btn-leia-mais:focus, .pagina-button:focus {
+    outline: 2px solid #0056b3; /* Adiciona uma borda de foco */
+    outline-offset: 4px; /* Distância entre o foco e o botão/link */
+}
+
+/* Estiliza o rodapé da página */
+footer {
+    background-color: #F5F7F8;
+    color: #45474B;
+    text-align: center;
+    padding: 1rem 0;
+    width: 100%;
+    font-size: 1rem;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    section input {
+        width: 100%;
+    }
+
+    .resultados-pesquisa {
+        grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
+    }
+}
+
+.highlight {
+    background-color: yellow;
+    font-weight: bold;
+}
+
+.paginacao-container {
+    display: flex;
+    justify-content: center;
+    padding-left: 2rem;
+    margin: 20px 0;
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    white-space: nowrap; /* Impede quebra de linha nos botões */
+}
+
+.msg-pesq {
+    display: flex;
+    justify-content: center;
+    padding-left: 2rem;
+    margin: 20px 0;
+    overflow-x: auto; /* Adiciona rolagem horizontal se necessário */
+    white-space: nowrap; /* Impede quebra de linha nos botões */
+}
+
+.pagina-button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    transition: background-color 0.3s;
+    white-space: nowrap; /* Evita que o texto quebre em botões menores */
+}
+.pagina-button:hover {
+    background-color: #e0e0e0;
+}
+.pagina-ativa {
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+.pagina-button:focus {
+    outline: none;
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.2rem;
+        margin: 1.5rem 0; /* Reduz a margem superior em telas menores */
+    }
+
+    section input {
+        width: 100%;
+        padding: 0.8rem; /* Reduz o padding para se ajustar melhor em dispositivos móveis */
+    }
+
+    section button {
+        padding: 0.6rem 1rem; /* Reduz o tamanho dos botões */
+        font-size: 0.9rem;
+    }
+
+    .resultados-pesquisa {
+        grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
+        gap: 15px; /* Reduz o espaço entre os cards em dispositivos menores */
+    }
+
+    .btn-leia-mais {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .pagina-button {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}

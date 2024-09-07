@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>   
+    <title>Notícias Brasil</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="site-title">Notícias Brasil</h1>
+    </header>
+    <main>
+        <section class="search-container">
+            <input type="text" id="searchInput" placeholder="Explore o mundo das notícias: digite sua busca">
+            <button class="search-button" onclick="pesquisar()">Pesquisar</button>
+        </section>
+
+        <div class="msg-pesq"></div>
+        <div class="paginacao-container paginacao-container-top"></div>
+
+        <section class="resultados-pesquisa"> </section>
+        <div class="paginacao-container paginacao-container-bottom"></div>   
+    </main>
+    <footer>
+        <p>© 2024 Notícias Brasil. Todos os direitos reservados.</p>
+        <p>Entre em contato : WellingtonSantos7799@gmail.com | <a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p></p>
+    </footer>
+    
+    <script src="dados.js"></script>    
+    <script src="app.js"></script>
+</body>
+
+</html>
