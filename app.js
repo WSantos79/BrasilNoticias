@@ -1,14 +1,12 @@
-(function(_0x5d5a8b,_0x26aaf7){const _0xda32be=_0x5464,_0x5651ff=_0x5d5a8b();while(!![]){try{const _0x5cff05=-parseInt(_0xda32be(0x1bd))/0x1+-parseInt(_0xda32be(0x1c1))/0x2+parseInt(_0xda32be(0x1c3))/0x3+parseInt(_0xda32be(0x1bc))/0x4*(parseInt(_0xda32be(0x1bb))/0x5)+-parseInt(_0xda32be(0x1be))/0x6+-parseInt(_0xda32be(0x1c0))/0x7*(-parseInt(_0xda32be(0x1bf))/0x8)+parseInt(_0xda32be(0x1c2))/0x9;if(_0x5cff05===_0x26aaf7)break;else _0x5651ff['push'](_0x5651ff['shift']());}catch(_0x5e8438){_0x5651ff['push'](_0x5651ff['shift']());}}}(_0x216b,0xe35fc));function _0x5464(_0x92bafc,_0x3b3507){const _0x216b53=_0x216b();return _0x5464=function(_0x54643d,_0x4ae2b3){_0x54643d=_0x54643d-0x1bb;let _0x3e1583=_0x216b53[_0x54643d];return _0x3e1583;},_0x5464(_0x92bafc,_0x3b3507);}function _0x216b(){const _0x4f432b=['2156364ycSUCo','7625853riaogp','4599000QwfGqr','89290dKVSZP','316irAJWe','361893oNXeUE','9559722IhytiZ','136OOeojr','71477aLUSVq'];_0x216b=function(){return _0x4f432b;};return _0x216b();}const apiKey='edc56c36f2444ae0b92bbf2b618a7d43';
+const apiKey='edc56c36f2444ae0b92bbf2b618a7d43';
 
 const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br,info-money&apiKey=${apiKey}`;
 
 axios.get(url, {
   headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Upgrade': 'HTTP/2'
+      'Origin': 'https://noticias-brasil-delta.vercel.app/'
   }
-  })
+})
   .then(response => {
     const articles = response.data.articles;
 
@@ -24,7 +22,6 @@ axios.get(url, {
   .catch(error => {
     console.error('Erro ao buscar notícias:', error);
   });
-
 
 
 
