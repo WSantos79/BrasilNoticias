@@ -4,6 +4,7 @@ const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br
 
 axios.get(url, {
   headers: {
+      'Access-Control-Allow-Origin': 'https://noticias-brasil-delta.vercel.app/',
       'Origin': 'https://noticias-brasil-delta.vercel.app/'
   }
 })
