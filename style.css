@@ -25,7 +25,7 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    
+    margin-bottom: 0;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
@@ -40,7 +40,7 @@ section {
     align-items: center;
     margin-bottom: 3rem;
     width: 100%;
-    padding: 0 20px;
+    padding: 0 0px;
 }
 
 /* Estiliza os inputs dentro das seções */
@@ -114,15 +114,16 @@ section button:hover {
     background-color: #0056b3;
   }
   
-  .site-title {    
-    margin-left: 3rem; 
+  .site-title {      
+    padding: 10px; 
+    background-color: #9e95951c; /* Cor de fundo do título */
     letter-spacing: 0.2rem; /* Espaçamento entre letras */
     font-size: 3rem;
     color: #333;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     margin-bottom: 2rem;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
 
@@ -214,13 +215,13 @@ section button:hover {
 }
 
 /* Estiliza o rodapé da página */
-footer {
-    background-color: #F5F7F8;
+footer {    
     color: #45474B;
     text-align: center;
-    padding: 1rem 0;
-    width: 100%;
+    padding: 1rem 0;    
     font-size: 1rem;
+    background-color: #9e95951c; /* Cor de fundo do título */
+    flex: 0 0 auto;
 }
 
 .highlight {
@@ -275,10 +276,41 @@ footer {
         letter-spacing: 0.2rem;
     }
 
-    #searchInput {
-        width: 90%;
+    footer {      
+        color: #45474B;
+        text-align: center;
+        padding: 1rem 0;       
+        font-size: 1rem;
+        background-color: #9e95951c;       
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        flex: 0 0 auto;
     }
 
+    .site-title {
+        margin-left: 0;
+        background-color: #9e95951c; /* Cor de fundo do título */
+    }
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 3rem;
+        width: 100%;
+        padding: 0 0px; /* Centraliza o input */
+    }
+
+    #searchInput {
+        width: 96%;
+    }
+
+    #searchInput {
+        -webkit-placeholder: "Explore o mundo das notícias";
+        -moz-placeholder: "Explore o mundo das notícias";
+        -ms-placeholder: "Explore o mundo das notícias";
+        
+    }
     .resultados-pesquisa {
         grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
     }
