@@ -223,22 +223,6 @@ footer {
     font-size: 1rem;
 }
 
-/* Responsividade para telas menores */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 2rem;
-        letter-spacing: 0.2rem;
-    }
-
-    section input {
-        width: 80%;
-    }
-
-    .resultados-pesquisa {
-        grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
-    }
-}
-
 .highlight {
     background-color: yellow;
     font-weight: bold;
@@ -282,4 +266,20 @@ footer {
 }
 .pagina-button:focus {
     outline: none;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        letter-spacing: 0.2rem;
+    }
+
+    #searchInput {
+        width: 90%;
+    }
+
+    .resultados-pesquisa {
+        grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
+    }
 }
