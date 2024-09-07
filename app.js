@@ -2,11 +2,11 @@
 
 const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br,info-money&apiKey=${apiKey}`;
 
-/*axios.get(url, {
+axios.get(url, {
   headers: {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
-    'Upgrade': 'HTTP/1.1'
+    'Upgrade': 'HTTP/2'
   }
   })
   .then(response => {
@@ -24,36 +24,7 @@ const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br
   .catch(error => {
     console.error('Erro ao buscar notícias:', error);
   });
-*/
 
-fetch(url, {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Upgrade': 'HTTP/1.1'
-  }
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Erro ao buscar notícias: ' + response.statusText);
-    }
-    return response.json();
-  })
-  .then(data => {
-    const articles = data.articles;
-
-    if (articles && articles.length > 0) {
-      console.log(articles);
-      // Limita a exibição a 15 artigos e envia para a função de exibição
-      adicionarElementosNaPagina(articles.slice(0, 15));
-    } else {
-      console.error('Nenhum artigo foi retornado pela API.');
-    }
-  })
-  .catch(error => {
-    console.error('Erro ao buscar notícias:', error);
-  });
 
 
 
