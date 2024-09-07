@@ -303,14 +303,7 @@ footer {
 
     #searchInput {
         width: 96%;
-    }
-
-    #searchInput {
-        -webkit-placeholder: "Explore o mundo das notícias";
-        -moz-placeholder: "Explore o mundo das notícias";
-        -ms-placeholder: "Explore o mundo das notícias";
-        
-    }
+    }    
     .resultados-pesquisa {
         grid-template-columns: 1fr; /* Em telas menores, exibe um card por linha */
     }
