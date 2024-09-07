@@ -47,8 +47,8 @@ Este projeto é um site de notícias desenvolvido durante a **Imersão Alura + G
 
  5. **Deploy:**
 
-    O projeto está hospedado na Vercel e pode ser acessado no seguinte link: Notícias Brasil - Deploy
-
+    O projeto está hospedado na Vercel e pode ser acessado no seguinte link: [Notícias Brasil](https://noticias-brasil-delta.vercel.app/)
+    
 ## Contribuição
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou submeter um pull request.
 
