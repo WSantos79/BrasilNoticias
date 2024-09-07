@@ -29,8 +29,9 @@ const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br
 fetch(url, {
   method: 'GET',
   headers: {
-   
-   
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Upgrade': 'HTTP/1.1'
   }
 })
   .then(response => {
