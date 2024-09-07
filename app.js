@@ -2,11 +2,11 @@
 
 const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br,info-money&apiKey=${apiKey}`;
 
-axios.get(url, {
-  headers: {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',}
-  })
+axios.get({
+  method: 'get',
+  url: `${url}`,
+  httpVersion: '1.1'
+})
   .then(response => {
     const articles = response.data.articles;
 
