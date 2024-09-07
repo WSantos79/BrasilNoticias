@@ -1,91 +1,83 @@
-const apiKey='edc56c36f2444ae0b92bbf2b618a7d43';
-
-const url = `https://newsapi.org/v2/top-headlines?sources=globo,blasting-news-br,info-money&apiKey=${apiKey}`;
-
-axios.get(url, {
-  headers: {
-      'Access-Control-Allow-Origin': 'https://noticias-brasil-delta.vercel.app/',
-      'Origin': 'https://noticias-brasil-delta.vercel.app/'
-  }
-})
-  .then(response => {
-    const articles = response.data.articles;
+// Carregando
+function carregarNoticias() {
+  try {
+    const articles = noticias;
 
     if (articles && articles.length > 0) {      
-      console.log(articles)
-        // Limita a exibição a 15 artigos e envia para a função de exibição
-        adicionarElementosNaPagina(articles.slice(0, 15));
+      // Nova estrutura de dados
+      let dadosFormatados = articles.map(article => {
+        return {
+          titulo: article.title,
+          descricao: article.description,
+          link: article.url || "Link não disponível",  // Exibe "Link não disponível" se não houver um URL
+          tags: article.author ? article.author.toLowerCase().replace(/\s+/g, ' ') : "Autor desconhecido"  // Converte o autor em tags, ajustando o formato
+        };
+      });
+
+      // Limita a exibição a 15 artigos e envia para a função de exibição
+      adicionarElementosNaPagina(articles.slice(0, 15));
       
     } else {
-      console.error('Nenhum artigo foi retornado pela API.');
+      console.error('Nenhum artigo foi encontrado no arquivo de dados.');
     }
-  })
-  .catch(error => {
-    console.error('Erro ao buscar notícias:', error);
-  });
-
-
+  } catch (error) {
+    console.error('Erro ao carregar notícias:', error);
+  }
+}
 
 // Função para buscar notícias
 async function pesquisar() {    
   const palavraDaBusca = document.getElementById('searchInput').value;
-  const url = `https://newsapi.org/v2/everything?q=${palavraDaBusca}&sortBy=publishedAt&language=pt&apiKey=${apiKey}`;
-  
-  if (!palavraDaBusca){
-    exibirMensagemErro();    
-    return
+  const msgpesq = document.querySelector('.msg-pesq');
+  msgpesq.innerHTML = ""
+
+  if (!palavraDaBusca) {
+    exibirMensagemErro();
+    return;
   }
 
   try {
-      const response = await fetch(url);
+    const data = noticias;  // Usa o arquivo de dados
+    
+    
+    // Filtra os artigos pela palavra-chave
+    const artigosFiltrados = data.filter(article => {
+      return (
+        (article.title && article.title.toLowerCase().includes(palavraDaBusca.toLowerCase())) ||
+        (article.description && article.description.toLowerCase().includes(palavraDaBusca.toLowerCase()))
+      );
+    });
+    
+    // Verifica se há artigos filtrados
+    if (artigosFiltrados.length > 0) {
+      console.log('Número total de artigos:', artigosFiltrados.length);
       
-      // Verifica se a resposta foi bem-sucedida (status 200)
-      if (!response.ok) {
-          throw new Error(`Erro na requisição: ${response.status} ${response.statusText}`);
-      }
+      // Limpa os resultados anteriores
+      limparResultados();
 
-      const data = await response.json();
+      // Ordena os resultados por data e exibe os primeiros 15 artigos
+      const sortedArticles = artigosFiltrados.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
+      adicionarElementosNaPagina(sortedArticles.slice(0, 15), palavraDaBusca);
       
-      // Verifica se há artigos na resposta
-      if (data.articles && data.articles.length > 0) {
-          console.log('Número total de artigos:', data.articles.length);
-          console.log(data.articles)
-          // Limpa os resultados anteriores
-          limparResultados();
-
-          // Ordena os resultados por data e exibe os primeiros 15 artigos
-          const sortedArticles = data.articles.sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
-          adicionarElementosNaPagina(sortedArticles.slice(0, 15), palavraDaBusca);
-
-          // Criar paginação para o restante dos elementos
-          criarPaginacao(sortedArticles, palavraDaBusca, 1); // Página inicial = 1
-      } else {
-          exibirMensagemNenhumResultado();
-      }
-  } catch (error) {
-      console.error('Erro ao buscar notícias:', error.message);
+      // Cria paginação para o restante dos elementos
+      criarPaginacao(sortedArticles, palavraDaBusca, 1);
+    } else {
       exibirMensagemErro();
+    }
+  } catch (error) {
+    console.error('Erro ao buscar notícias:', error.message);
+    exibirMensagemErro();
   }
 }
 
-
+// As demais funções continuam iguais, sem alteração:
 
 // Função para limpar os resultados antigos da tela
 function limparResultados() {
   const resultadosPesquisa = document.querySelector('.resultados-pesquisa');
   if (resultadosPesquisa) {
     resultadosPesquisa.innerHTML = ''; // Limpa os resultados antigos
-}  
- // const paginacaoContainer = document.querySelector('.paginacao-container');
- // if (paginacaoContainer) paginacaoContainer.innerHTML = ''; // Limpa a paginação
-}
-
-// Função para exibir uma mensagem quando não houver resultados
-function exibirMensagemNenhumResultado() {
-  const resultadosPesquisa = document.querySelector('.resultados-pesquisa');
-  const mensagem = document.createElement('p');
-  mensagem.textContent = 'Nenhuma notícia encontrada.';
-  resultadosPesquisa.appendChild(mensagem);
+  }
 }
 
 // Função para exibir uma mensagem de erro na pesquisa
@@ -100,10 +92,8 @@ function adicionarElementosNaPagina(articles, palavraDaBusca) {
   
   // Itera sobre cada artigo e cria os elementos na página
   articles.forEach(article => {
-    console.log(article)
-
-    // Verefica se há descrição e titulo, afim de evitar erro, e verefica se o artigo exista antes de criar
-    if (article.title && article.description && article.title !== '[Removed]' && article.description !== '[Removed]') { 
+    // Verifica se há título e descrição antes de tentar acessá-los para evitar erros
+    if (article && article.title && article.description) { 
       const itemResultado = document.createElement('div');
       itemResultado.classList.add('item-resultado');
 
@@ -112,7 +102,7 @@ function adicionarElementosNaPagina(articles, palavraDaBusca) {
       title.innerHTML = highlightTerm(article.title, palavraDaBusca);
       itemResultado.appendChild(title);
 
-      // Verifica se há descrição e só exibe se houver e adiciona destaque no termo pesquisado
+      // Verifica se há descrição e só exibe se houver, com destaque no termo pesquisado
       if (article.description) {
           const description = document.createElement('p');
           description.innerHTML = highlightTerm(article.description, palavraDaBusca);
@@ -129,7 +119,7 @@ function adicionarElementosNaPagina(articles, palavraDaBusca) {
 
       // Botão para ler mais
       const readMore = document.createElement('a');
-      readMore.href = article.url;
+      readMore.href = article.url;    
       readMore.textContent = 'Leia a matéria completa';
       readMore.classList.add('btn-leia-mais');
       readMore.target = '_blank'; // Abre em nova aba
@@ -137,7 +127,9 @@ function adicionarElementosNaPagina(articles, palavraDaBusca) {
 
       // Adiciona o item ao container
       resultadosPesquisa.appendChild(itemResultado);
-    }   
+    } else {
+      console.warn("Artigo com dados incompletos: ", article);
+    }
   });
 }
 
@@ -187,12 +179,11 @@ function criarPaginacao(articles, palavraDaBusca, currentPage) {
   gerarBotoesPaginacao(paginacaoContainerBase);
 }
 
-
-
-
-
 // Função para destacar os termos pesquisados no título e descrição
 function highlightTerm(text, term) {
   const regex = new RegExp(`(${term})`, 'gi');
   return text.replace(regex, '<span class="highlight">$1</span>');
 }
+
+// Chama a função para carregar as notícias ao carregar a página
+carregarNoticias();
