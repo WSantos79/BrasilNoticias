@@ -3,17 +3,7 @@ function carregarNoticias() {
   try {
     const articles = noticias;
 
-    if (articles && articles.length > 0) {      
-      // Nova estrutura de dados
-      let dadosFormatados = articles.map(article => {
-        return {
-          titulo: article.title,
-          descricao: article.description,
-          link: article.url || "Link não disponível",  // Exibe "Link não disponível" se não houver um URL
-          tags: article.author ? article.author.toLowerCase().replace(/\s+/g, ' ') : "Autor desconhecido"  // Converte o autor em tags, ajustando o formato
-        };
-      });
-
+    if (articles && articles.length > 0) {
       // Limita a exibição a 15 artigos e envia para a função de exibição
       adicionarElementosNaPagina(articles.slice(0, 15));
       
