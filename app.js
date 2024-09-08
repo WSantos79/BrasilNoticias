@@ -16,6 +16,17 @@ function carregarNoticias() {
   }
 }
 
+
+const input = document.getElementById('searchInput'); 
+const botao = document.querySelector('.search-button'); 
+
+// Faz pesquisa quando o usuario aperta a tecla enter sem a necessidade de clicar no botao de pesquisa
+input.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    botao.click();
+  }
+});
+
 // Função para buscar notícias
 async function pesquisar() {    
   const palavraDaBusca = document.getElementById('searchInput').value;
