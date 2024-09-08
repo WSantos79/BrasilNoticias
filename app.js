@@ -8,10 +8,11 @@ function carregarNoticias() {
       adicionarElementosNaPagina(articles.slice(0, 15));
       
     } else {
-      console.error('Nenhum artigo foi encontrado no arquivo de dados.');
+      
+      exibirMensagemErro()
     }
   } catch (error) {
-    console.error('Erro ao carregar notícias:', error);
+    exibirMensagemErro()    
   }
 }
 
@@ -40,8 +41,8 @@ async function pesquisar() {
     
     // Verifica se há artigos filtrados
     if (artigosFiltrados.length > 0) {
-      console.log('Número total de artigos:', artigosFiltrados.length);
-      
+
+
       // Limpa os resultados anteriores
       limparResultados();
 
@@ -54,8 +55,7 @@ async function pesquisar() {
     } else {
       exibirMensagemErro();
     }
-  } catch (error) {
-    console.error('Erro ao buscar notícias:', error.message);
+  } catch (error) {    
     exibirMensagemErro();
   }
 }
@@ -118,7 +118,7 @@ function adicionarElementosNaPagina(articles, palavraDaBusca) {
       // Adiciona o item ao container
       resultadosPesquisa.appendChild(itemResultado);
     } else {
-      console.warn("Artigo com dados incompletos: ", article);
+      
     }
   });
 }
