@@ -55,7 +55,7 @@ O projeto é composto pelos seguintes arquivos principais:
 
 5. **Deploy:**
 
-    O projeto está hospedado na Vercel e pode ser acessado no seguinte link: [Notícias Brasil](https://noticias-brasil-delta.vercel.app/ "target=_blank" rel="noopener noreferrer")
+    O projeto está hospedado na Vercel e pode ser acessado no seguinte link: [Notícias Brasil](https://noticias-brasil-delta.vercel.app/ "target=_blank")
 
 ## Estrutura de Código
 
