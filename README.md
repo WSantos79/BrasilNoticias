@@ -1,5 +1,11 @@
 # Notícias Brasil
 
+
+
+<img src="https://raw.githubusercontent.com/WSantos79/Noticias-Brasil/main/print.PNG" alt="Imagem ilustrativa" style="max-width: 100%;">
+
+
+
 ## :heavy_check_mark: Descrição
 
 Bem-vindo ao **Notícias Brasil**, um site que permite aos usuários explorar e buscar notícias de forma rápida e prática. Com uma interface simples e intuitiva, o projeto oferece a possibilidade de filtrar notícias por palavras-chave e visualizar os resultados com paginação, além de destacar o termo pesquisado nos títulos e descrições.
