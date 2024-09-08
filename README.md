@@ -1,5 +1,8 @@
 # Notícias Brasil
 
+## :mag: Veja o projeto online !
+
+:link: https://noticias-brasil-delta.vercel.app/
 
 
 <img src="https://raw.githubusercontent.com/WSantos79/Noticias-Brasil/main/print.PNG" alt="Imagem ilustrativa" style="max-width: 100%;">
